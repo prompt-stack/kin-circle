@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kin Circle - Plan Your Perfect Family Reunion</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Kin Circle</div>
+            <div class="nav-links">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#family" class="nav-link">Family</a>
+                <a href="#location" class="nav-link">Location</a>
+                <a href="#plan" class="nav-link">Plan</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="hero">
+                <h1>Bring Your Family Together</h1>
+                <p>Plan the perfect family reunion with AI-powered location suggestions and seamless coordination</p>
+                <button class="cta-button" onclick="showSection('family')">Start Planning</button>
+            </div>
+        </section>
+
+        <!-- Family Section -->
+        <section id="family" class="section">
+            <div class="container">
+                <div class="family-header">
+                    <h2>Family Members</h2>
+                    <div class="family-actions">
+                        <button class="add-member-btn" onclick="openAddMemberModal()">+ Add Family Member</button>
+                        <button class="demo-button" onclick="loadDemoData()">Try Demo Data</button>
+                    </div>
+                </div>
+                <div class="family-list" id="familyList">
+                    <!-- Family members will be added here -->
+                </div>
+                <button class="next-button" onclick="showSection('location')">Find Best Location</button>
+            </div>
+        </section>
+
+        <!-- Location Section -->
+        <section id="location" class="section">
+            <div class="container">
+                <h2>Recommended Locations</h2>
+                <div class="location-analysis" id="locationAnalysis">
+                    <p>Add family members to see location recommendations</p>
+                </div>
+                <div class="location-results" id="locationResults">
+                    <!-- AI-suggested locations will appear here -->
+                </div>
+                <button class="next-button" onclick="showSection('plan')">Plan Event</button>
+            </div>
+        </section>
+
+        <!-- Planning Section -->
+        <section id="plan" class="section">
+            <div class="container">
+                <h2>Event Planning</h2>
+                <div class="planning-tools">
+                    <div class="date-picker">
+                        <label>Event Date:</label>
+                        <input type="date" id="eventDate">
+                    </div>
+                    <div class="venue-search">
+                        <h3>Suggested Venues & Hotels</h3>
+                        <div id="venueResults">
+                            <!-- Venue suggestions will appear here -->
+                        </div>
+                    </div>
+                    <div class="activities">
+                        <h3>Activities & Attractions</h3>
+                        <div id="activityResults">
+                            <!-- Activity suggestions will appear here -->
+                        </div>
+                    </div>
+                </div>
+                <button class="cta-button" onclick="generatePlan()">Generate Complete Plan</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Add Family Member Modal -->
+    <div id="addMemberModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add Family Member</h3>
+                <button class="modal-close" onclick="closeAddMemberModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="addMemberForm">
+                    <div class="form-group">
+                        <label for="modalFirstName">First Name</label>
+                        <input type="text" id="modalFirstName" placeholder="Enter first name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="modalLastName">Last Name</label>
+                        <input type="text" id="modalLastName" placeholder="Enter last name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="modalZip">Zip Code</label>
+                        <input type="text" id="modalZip" placeholder="12345" maxlength="5" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="modalCity">City, State</label>
+                        <input type="text" id="modalCity" placeholder="Auto-filled from zip code" readonly>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="modalPhone">Phone Number (Optional)</label>
+                        <input type="tel" id="modalPhone" placeholder="(555) 123-4567">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="modalEmail">Email Address (Optional)</label>
+                        <input type="email" id="modalEmail" placeholder="name@example.com">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-secondary" onclick="closeAddMemberModal()">Cancel</button>
+                <button type="button" class="btn-primary" onclick="addFamilyMemberFromModal()">Add Member</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
